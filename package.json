@@ -20,13 +20,12 @@
     "prettier": "^1.10.2"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ],
-    "package.json": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"],
+    "package.json": ["prettier --write", "git add"]
+  },
+  "author": "Johnny Magrippis <j@magrippis.com> (https://magrippis.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmagrippis/react-googleyolo"
   }
 }
