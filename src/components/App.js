@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-class App extends Component {
+import withGoogleyolo from './withGoogleyolo'
+import Provider from './Provider'
+import Login from './Login'
+
+class App extends PureComponent {
   render() {
     return (
-      <div>This should be connected to have `googleyolo` at some point</div>
+      <Provider>
+        <Login />
+      </Provider>
     )
   }
 }
 
-export default App
+export default withGoogleyolo(App)
