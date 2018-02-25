@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import GoogleyoloShape from '../googleyoloShape'
+import GoogleyoloShape from '../GoogleyoloShape'
 
 const withGoogleyolo = WrappedComponent =>
   class GoogleyoloWrapper extends Component {

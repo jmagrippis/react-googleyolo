@@ -1,7 +1,7 @@
 import { Children, PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-import GoogleyoloShape from '../googleyoloShape'
+import GoogleyoloShape from '../GoogleyoloShape'
 
 const GOOGLEYOLO_SRC = 'https://smartlock.google.com/client'
 
