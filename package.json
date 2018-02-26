@@ -29,7 +29,8 @@
     "webpack-cli": "^2.0.9"
   },
   "peerDependencies": {
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "prop-types": "^15.6.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"],
