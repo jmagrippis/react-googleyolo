@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "startDist": "NODE_ENV=development webpack --mode=development --watch",
+    "startDist": "NODE_ENV=development webpack --watch --mode=production",
     "buildDist": "NODE_ENV=production webpack --mode=production",
     "precommit": "lint-staged"
   },

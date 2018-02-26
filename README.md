@@ -77,4 +77,36 @@ We also expose a `withGoogleyolo` helper method to fish out `googleyolo` from th
 
 But because defining a context type is all that "connect" method does, we also provide a `googleyoloShape` in case you are comfortable with your components using things straight out of context.
 
+### Automatic Retrieval
+
+In case the above seems like too much work, you may also provide a `clientId` string and an `onRetrieveSuccess` method to the `Provider`, and it will do the retrieve call for you, calling your method with the received credential!
+
+```js
+return (
+  <YoloProvider
+    clientId={process.env.REACT_APP_GOOGLE_CREDENTIALS_CLIENT_ID}
+    onRetrieveSuccess={this.onRetrieveSuccess}
+    onRetrieveFailure={this.onRetrieveFailure}
+  >
+    <Home />
+  </YoloProvider>
+)
+```
+
+### User Signout
+
+Finally, we expose a `Logout` component you can customize to your heart's content. All it really does is `googleyolo.disableAutoSignIn()` for you on click and then call its `onAutoSignInDisabled` you optionally gave it.
+
+```js
+return <Logout />
+
+// feel free to pass in children
+
+return <Logout>Click here to logout forever</Logout>
+
+// Or specify a different type of node if you don't want it to be a button
+
+return <Logout node="span" />
+```
+
 [googleyolo]: https://developers.google.com/identity/one-tap/web/get-started 'I can only assume it stands for You Only Login Once'
