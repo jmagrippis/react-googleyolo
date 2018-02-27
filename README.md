@@ -4,6 +4,8 @@ Simple googleyolo `Provider` and `withGoogleyolo` connector-style method that fi
 
 [Googleyolo] is of course what google calls its smartlock / one-tap sign-up and sign-in library.
 
+[Live demo here]!
+
 ## Usage
 
 Feel free to look at the source code for the simplest of examples!
@@ -133,4 +135,5 @@ return (
 return <Login node="span" clientId="somanyapikeys" />
 ```
 
+[live demo here]: https://react-googleyolo.netlify.com/ 'Automatically deploys on pushes on master'
 [googleyolo]: https://developers.google.com/identity/one-tap/web/get-started 'I can only assume it stands for You Only Login Once'

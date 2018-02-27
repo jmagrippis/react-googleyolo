@@ -41,5 +41,15 @@
     "type": "git",
     "url": "https://github.com/jmagrippis/react-googleyolo"
   },
-  "license": "MIT"
+  "homepage": "https://react-googleyolo.netlify.com",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "googleyolo",
+    "hoc",
+    "auth",
+    "authentication",
+    "single sign-on",
+    "login"
+  ]
 }
