@@ -25,7 +25,12 @@ class Logout extends PureComponent {
   }
 
   render() {
-    const { googleyolo, node: Node, ...restProps } = this.props
+    const {
+      googleyolo,
+      onAutoSignInDisabled,
+      node: Node,
+      ...restProps
+    } = this.props
     return <Node onClick={this.onClick} {...restProps} />
   }
 }

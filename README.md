@@ -95,7 +95,7 @@ return (
 
 ### User Signout
 
-Finally, we expose a `Logout` component you can customize to your heart's content. All it really does is `googleyolo.disableAutoSignIn()` for you on click and then call its `onAutoSignInDisabled` you optionally gave it.
+We also expose a handy `Logout` component you can customize to your heart's content. All it really does is `googleyolo.disableAutoSignIn()` for you on click and then call its `onAutoSignInDisabled` you optionally gave it.
 
 ```js
 return <Logout />
@@ -107,6 +107,30 @@ return <Logout>Click here to logout forever</Logout>
 // Or specify a different type of node if you don't want it to be a button
 
 return <Logout node="span" />
+```
+
+### User Signin re-prompt
+
+Due to popular demand, we now offer a similar `Login` button. Give it a `clientId` and it will make Google's official login flow appear. You may also give it something to do `onLoginSuccess`, or error, making this component a bit of a cross between the `Provider` and the `Logout` button.
+
+```js
+return <Login clientId="iGotThisFromGoogle" />
+
+// feel free to pass in children
+
+return (
+  <Login
+    clientId={process.env.REACT_APP_GOOGLE_CREDENTIALS_CLIENT_ID}
+    onRetrieveSuccess={this.onLoginSuccess}
+    onLoginFailure={this.onRetrieveFailure}
+  >
+    Would you like to login?
+  </Login>
+)
+
+// Or specify a different type of node if you don't want it to be a button
+
+return <Login node="span" clientId="somanyapikeys" />
 ```
 
 [googleyolo]: https://developers.google.com/identity/one-tap/web/get-started 'I can only assume it stands for You Only Login Once'
