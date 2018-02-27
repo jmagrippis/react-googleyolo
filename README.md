@@ -75,7 +75,7 @@ We expose a `Provider`, which loads the `googleyolo` client library. All this ca
 
 We also expose a `withGoogleyolo` helper method to fish out `googleyolo` from the context, without you going into the hassle of defining context types.
 
-But because defining a context type is all that "connect" method does, we also provide a `googleyoloShape` in case you are comfortable with your components using things straight out of context.
+But because defining a context type is all that "connect" method does, we also provide a `GoogleyoloShape` in case you are comfortable with your components using things straight out of context.
 
 ### Automatic Retrieval
 
