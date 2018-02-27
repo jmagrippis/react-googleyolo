@@ -51,7 +51,7 @@ class Provider extends PureComponent {
       onRetrieveError,
       supportedAuthMethods,
     } = this.props
-    googleyolo
+    return googleyolo
       .retrieve({
         supportedAuthMethods,
         supportedIdTokenProviders: [
