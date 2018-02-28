@@ -36,8 +36,9 @@ import { withGoogleyolo } from 'react-googleyolo'
 import { authenticateWithYourBackend } from '../api'
 
 class Header extends PureComponent {
-  state = { isLoading: true }
-  componentDidMount() {
+  state = { isLoading: false }
+
+  retrieve = googleyolo =>
     googleyolo.retrieve().then(
       credential => {
         this.setState({ isLoading: false })
@@ -52,6 +53,23 @@ class Header extends PureComponent {
         this.setState({ isLoading: false })
       }
     )
+
+  componentDidMount() {
+    const { googleyolo } = this.props
+    if (googleyolo) {
+      this.setState({ isLoading: true })
+      this.retrieve(googleyolo)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { googleyolo } = this.props
+    const { isLoading } = this.state
+
+    if (googleyolo & !isLoading && !prevProps.googleyolo) {
+      this.setState({ isLoading: true })
+      this.retrieve(googleyolo)
+    }
   }
 
   render() {
