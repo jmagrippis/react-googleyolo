@@ -10,16 +10,16 @@ class App extends PureComponent {
   }
 
   setCredential = credential => {
-    this.setState({ credential, isLoadingAuth: false })
+    this.setState({ credential, isLoadingAuth: false, err: undefined })
   }
 
   onRetrieveError = err => {
-    this.setState({ isLoadingAuth: false })
+    this.setState({ err, isLoadingAuth: false })
     console.log(err)
   }
 
   render() {
-    const { credential, isLoadingAuth } = this.state
+    const { credential, err, isLoadingAuth } = this.state
     return (
       <YoloProvider
         clientId={process.env.REACT_APP_GOOGLE_CREDENTIALS_CLIENT_ID}
@@ -28,6 +28,7 @@ class App extends PureComponent {
       >
         <Info
           credential={credential}
+          err={err}
           setCredential={this.setCredential}
           isLoadingAuth={isLoadingAuth}
         />
