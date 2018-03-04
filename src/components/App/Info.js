@@ -32,6 +32,10 @@ class Info extends PureComponent {
     err: GoogleyoloErrorShape,
   }
 
+  static defaultProps = {
+    isLoadingAuth: false,
+  }
+
   onAutoSignInDisabled = () => {
     const { setCredential } = this.props
     setCredential()

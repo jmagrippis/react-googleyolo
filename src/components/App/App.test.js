@@ -5,5 +5,5 @@ import App from './App'
 
 it('renders without crashing', () => {
   const component = mount(<App />)
-  expect(component).toBeDefined()
+  expect(component.length).toBe(1)
 })
