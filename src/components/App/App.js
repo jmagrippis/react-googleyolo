@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 
-import withGoogleyolo from './withGoogleyolo'
-import YoloProvider from './Provider'
+import { YoloProvider, withGoogleyolo } from '../../react-googleyolo'
 import Info from './Info'
 
 class App extends PureComponent {

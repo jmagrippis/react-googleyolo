@@ -1,11 +1,13 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import withGoogleyolo from './withGoogleyolo'
-import Logout from './Logout'
-import Login from './Login'
+import {
+  Login,
+  Logout,
+  withGoogleyolo,
+  GoogleyoloShape,
+} from '../../react-googleyolo'
 import Debug from './Debug'
-import GoogleyoloShape from '../GoogleyoloShape'
 
 const GoogleyoloErrorShape = PropTypes.shape({
   type: PropTypes.string.isRequired,
@@ -28,6 +30,10 @@ class Info extends PureComponent {
     credential: GoogleyoloCredentialShape,
     googleyolo: GoogleyoloShape,
     err: GoogleyoloErrorShape,
+  }
+
+  static defaultProps = {
+    isLoadingAuth: false,
   }
 
   onAutoSignInDisabled = () => {

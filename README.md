@@ -1,10 +1,12 @@
 # React googleyolo
 
-Simple googleyolo `Provider` and `withGoogleyolo` connector-style method that fishes it out of the context and passes it to the given component as a prop.
+Simple googleyolo `Provider` and `withGoogleyolo` HOC-style method that fishes the library out of the context and passes it to the "connected" components as a prop.
 
 [Googleyolo] is of course what google calls its smartlock / one-tap sign-up and sign-in library.
 
 [Live demo here]!
+
+![3 second demo][demo]
 
 ## Usage
 
@@ -15,8 +17,8 @@ You'll be using it somewhat like ...
 ```js
 // somewhere near your app's entry point: index.js, app.js etc.
 
-import YoloProvider from 'react-googleyolo'
-
+import { YoloProvider } from 'react-googleyolo'
+// import YoloProvider from 'react-googleyolo' // also works
 class App extends PureComponent {
   render() {
     return (
@@ -44,7 +46,7 @@ class Header extends PureComponent {
         this.setState({ isLoading: false })
 
         // imaginary method, where you hit your backend with the idToken
-        // to verify it really is a valid and sign him in and get his object back
+        // to verify it really is valid, then sign them in and get their User object back
         authenticateWithYourBackend(credential.idToken).then(user => {
           this.setState(user)
         })
@@ -79,7 +81,7 @@ class Header extends PureComponent {
     }
 
     if (user) {
-      return <div>You are logged in as {user.firstName}</div>
+      return <div>You are logged in as {user.displayName}</div>
     }
 
     // Imaginary component that signs you in
@@ -91,7 +93,7 @@ class Header extends PureComponent {
 export default withGoogleyolo(Header)
 ```
 
-We expose a `Provider`, which loads the `googleyolo` client library. All this came about because google didn't seem to be an npm package for it! The `Provider` simply puts the `googleyolo` object in the context for any component further down the tree to use.
+We expose a `Provider`, which loads the `googleyolo` client library. All this came about because google didn't seem to publish an npm package for it! The `Provider` then simply puts the `googleyolo` object in the context for any component further down the tree to use.
 
 We also expose a `withGoogleyolo` helper method to fish out `googleyolo` from the context, without you going into the hassle of defining context types.
 
@@ -99,7 +101,7 @@ But because defining a context type is all that "connect" method does, we also p
 
 ### Automatic Retrieval
 
-In case the above seems like too much work, you may also provide a `clientId` string and an `onRetrieveSuccess` method to the `Provider`, and it will do the retrieve call for you, calling your method with the received credential!
+In case the above seems like too much work, you may also provide a `clientId` string and an `onRetrieveSuccess` method to the `Provider`. This will make it do the retrieve call for you, calling your method afterwards with the received credential!
 
 ```js
 return (
@@ -115,7 +117,7 @@ return (
 
 ### User Signout
 
-We also expose a handy `Logout` component you can customize to your heart's content. All it really does is `googleyolo.disableAutoSignIn()` for you on click and then call its `onAutoSignInDisabled` you optionally gave it.
+We also expose a handy `Logout` component you can customize to your heart's content. All it really does is `googleyolo.disableAutoSignIn()` for you on click, and then call its `onAutoSignInDisabled` you optionally gave it.
 
 ```js
 return <Logout />
@@ -131,7 +133,7 @@ return <Logout node="span" />
 
 ### User Signin re-prompt
 
-Due to popular demand, we now offer a similar `Login` button. Give it a `clientId` and it will make Google's official login flow appear. You may also give it something to do `onLoginSuccess`, or error, making this component a bit of a cross between the `Provider` and the `Logout` button.
+Finally and due to popular demand, we now offer a similar `Login` button. Give it a `clientId` and it will make Google's official login flow appear. You may also give it something to do `onLoginSuccess`, or error, making this component a bit of a cross between the `Provider` and the `Logout` button.
 
 ```js
 return <Login clientId="iGotThisFromGoogle" />
@@ -154,4 +156,5 @@ return <Login node="span" clientId="somanyapikeys" />
 ```
 
 [live demo here]: https://react-googleyolo.netlify.com/ 'Automatically deploys on pushes on master'
+[demo]: https://media.giphy.com/media/paM2Qm42krXGyB7RJs/giphy.gif 'https://react-googleyolo.netlify.com/'
 [googleyolo]: https://developers.google.com/identity/one-tap/web/get-started 'I can only assume it stands for You Only Login Once'
