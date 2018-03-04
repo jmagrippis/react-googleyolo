@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 
 import withGoogleyolo from './withGoogleyolo'
 import GoogleyoloShape from '../GoogleyoloShape'
+import warnIfNotProd from '../warnIfNotProd'
 
-class Login extends PureComponent {
+export class Login extends PureComponent {
   static propTypes = {
     clientId: PropTypes.string.isRequired,
     children: PropTypes.node,
     googleyolo: GoogleyoloShape,
-    node: PropTypes.node,
+    node: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     onLoginError: PropTypes.func,
     onLoginSuccess: PropTypes.func,
     supportedAuthMethods: PropTypes.arrayOf(PropTypes.string),
@@ -26,6 +27,13 @@ class Login extends PureComponent {
 
   onClick = () => {
     const { googleyolo, clientId, supportedAuthMethods } = this.props
+
+    if (!googleyolo) {
+      return warnIfNotProd(
+        'googleyolo not defined; maybe the library is not loaded yet?'
+      )
+    }
+
     googleyolo
       .hint({
         supportedAuthMethods,
