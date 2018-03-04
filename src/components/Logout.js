@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 
 import withGoogleyolo from './withGoogleyolo'
 import GoogleyoloShape from '../GoogleyoloShape'
+import warnIfNotProd from '../warnIfNotProd'
 
-class Logout extends PureComponent {
+export class Logout extends PureComponent {
   static propTypes = {
     googleyolo: GoogleyoloShape,
-    onAutoSignInDisabled: PropTypes.func,
     children: PropTypes.node,
-    node: PropTypes.node,
+    node: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
+    onAutoSignInDisabled: PropTypes.func,
+    onLogoutError: PropTypes.func,
   }
 
   static defaultProps = {
@@ -19,9 +21,22 @@ class Logout extends PureComponent {
 
   onClick = () => {
     const { googleyolo, onAutoSignInDisabled } = this.props
-    googleyolo.disableAutoSignIn().then(result => {
-      onAutoSignInDisabled && onAutoSignInDisabled(result)
-    })
+
+    if (!googleyolo) {
+      return warnIfNotProd(
+        'googleyolo not defined; maybe the library is not loaded yet?'
+      )
+    }
+
+    googleyolo.disableAutoSignIn().then(
+      result => {
+        onAutoSignInDisabled && onAutoSignInDisabled(result)
+      },
+      err => {
+        const { onLogoutError } = this.props
+        onLogoutError && onLogoutError(err)
+      }
+    )
   }
 
   render() {
