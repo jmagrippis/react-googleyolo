@@ -68,7 +68,7 @@ class Header extends PureComponent {
     const { googleyolo } = this.props
     const { isLoading } = this.state
 
-    if (googleyolo & !isLoading && !prevProps.googleyolo) {
+    if (googleyolo && !isLoading && !prevProps.googleyolo) {
       this.setState({ isLoading: true })
       this.retrieve(googleyolo)
     }
