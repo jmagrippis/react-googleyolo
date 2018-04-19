@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  mode: process.env.NODE_ENV || 'development',
   entry: './src/react-googleyolo.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,5 +22,8 @@ module.exports = {
   externals: {
     react: 'commonjs react',
     'prop-types': 'commonjs prop-types',
+  },
+  optimization: {
+    minimize: false,
   },
 }

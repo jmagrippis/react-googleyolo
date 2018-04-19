@@ -7,11 +7,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "startDist": "NODE_ENV=development webpack --watch --mode=production",
-    "buildDist": "NODE_ENV=production webpack --mode=production",
+    "startDist": "NODE_ENV=development webpack --watch",
+    "buildDist": "NODE_ENV=production webpack",
     "precommit": "lint-staged"
   },
   "main": "dist/index.js",
+  "module": "src/index.js",
   "dependencies": {
     "prop-types": "^15.6.0",
     "react": "^16.2.0"
